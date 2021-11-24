@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Criar um grupo</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	
+	<form action="/cadastrarGrupo" method="post">
+		<div>
+			<label for="nome-grupo">Nome:</label>	
+			<input type="text" name="nome" id="nome" value="">
+		</div>
+		
+		<div>
+			<label class="form-check-label">público</label>
+			<input type="radio" name="visibilidade" class="form-check-input" value="publico" id="publico"/>
+			<label class="form-check-label">privado</label>
+			<input type="radio" name="visibilidade" class="form-check-input" value="privado" id="privado"/>
+		</div>
+		
+		<div>
+			<label for="data">Data de expiração</label>
+			<input type="date" class="form-control" id="dataDeExpiracao" name="dataDeExpiracao"value=""/>
+		</div>
+		
+		<button type="submit">Criar grupo</button>
+	</form>
+</body>
+</html>
