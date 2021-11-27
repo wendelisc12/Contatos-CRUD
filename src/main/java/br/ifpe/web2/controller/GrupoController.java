@@ -22,7 +22,7 @@ public class GrupoController {
 	private GrupoService grupoService;
 
 	@GetMapping("/criarGrupo")
-	public String exibirForm() {
+	public String exibirForm(Grupo grupo) {
 		return "criar-grupo";
 	}
 	
@@ -30,6 +30,31 @@ public class GrupoController {
 	public String salvarGrupo(Grupo grupo) {
 		grupoService.criarGrupo(grupo);
 		return "index";
+	}
+
+	@GetMapping("/listaGrupos")
+	public String listarGrupos(Model model) {
+		model.addAttribute("listaGrupos", grupoService.listarGrupos());
+		return "grupos-list";
+	}
+	
+	
+	@GetMapping("/editarGrupo")
+	public String editarContato(Integer id, Model model) {
+		model.addAttribute("grupo", grupoService.buscarGrupo(id));
+		return "criar-grupo";
+	}
+	
+	@GetMapping("/removerGrupo")
+	public String removerGrupo(Integer id) {
+		grupoService.deletarGrupo(id);	
+		return "redirect:/listaGrupos";
+	}
+	
+	@GetMapping("/listarGrupos")
+	public String listarContatos(Model model) {
+		model.addAttribute("listaGrupos", grupoService.listarGrupos());
+		return "grupo-list";
 	}
 	
 }

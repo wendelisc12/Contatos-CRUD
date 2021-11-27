@@ -45,6 +45,7 @@ public class ContatoController {
 	
 	@GetMapping("/editarContato")
 	public String editarContato(String email, Model model) {
+		model.addAttribute("listGrupo", grupoService.listarGrupoVigente());
 		model.addAttribute("contato", contatoService.buscarContato(email));
 		return "contatos-form";
 	}

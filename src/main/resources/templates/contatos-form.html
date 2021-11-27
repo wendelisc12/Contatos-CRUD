@@ -16,11 +16,14 @@
   <ul class="nav navbar-nav">
     <li><a href="/exibirContato">Cadastrar Contatos</a></li>
     <li><a href="/listarContatos">Listar Contatos</a></li>
+    <li><a href="/criarGrupo">Criar Grupo</a></li>
+    <li><a href="/listaGrupos">Lista de Grupos</a></li>
   </ul>
 </nav>
 
 	<div class="container col-sm-12 col-md-6 col-md-offset-2" >
 		<form action="/salvarContato" th:object="${contato}" method="post">
+		<input type="hidden" th:field="*{email}"  th:value="email">
 			<div class="form-group">
 				<label for="nome">Nome</label> <input type="text" th:field="*{nome}"
 					class="form-control" id="nome" placeholder="Nome do contato">
@@ -53,9 +56,9 @@
 				
 		
 				<label>Grupos</label><Br/>
-					<div th:each="grupos : ${listGrupo}">
-						<input type="radio" class="form-check-input" th:field="*{grupos.nome}" th:value="${grupos.nome}"/>
-						<label th:text="${grupos.nome}" class="form-check-label"> </label>
+					<div th:each="grupo : ${listGrupo}">
+						<input type="radio" class="form-check-input" th:field="*{grupo.id}" th:value="${grupo.id}"/>
+						<label th:text="${grupo.nome}" class="form-check-label"> </label>
 					</div>
 				
 			</div>

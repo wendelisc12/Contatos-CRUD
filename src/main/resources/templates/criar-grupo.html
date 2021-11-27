@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Criar um grupo</title>
@@ -10,27 +11,45 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
+
 <body>
-	
-	<form action="/cadastrarGrupo" method="post">
+	<nav class="navbar navbar-inverse">
+		<ul class="nav navbar-nav">
+			<li><a href="/exibirContato">Cadastrar Contatos</a></li>
+			<li><a href="/listarContatos">Listar Contatos</a></li>
+			<li><a href="/criarGrupo">Criar Grupo</a></li>
+			<li><a href="/listaGrupos">Lista de Grupos</a></li>
+		</ul>
+	</nav>
+
+	<div class="container col-sm-12 col-md-6 col-md-offset-2" >
+	<form action="/cadastrarGrupo" th:object="${grupo}" method="post" >
+	<input type="hidden" th:field="*{id}"  th:value="id">
 		<div>
 			<label for="nome-grupo">Nome:</label>	
-			<input type="text" name="nome" id="nome" value="">
+			<input type="text" name="nome" id="nome" value="" th:field="*{nome}" class="form-control" placeholder="Nome do grupo">
 		</div>
 		
-		<div>
-			<label class="form-check-label">público</label>
-			<input type="radio" name="visibilidade" class="form-check-input" value="publico" id="publico"/>
-			<label class="form-check-label">privado</label>
-			<input type="radio" name="visibilidade" class="form-check-input" value="privado" id="privado"/>
+		<div style="margin:10px 0;">
+			<div style="display:flex;">
+				<label class="form-check-label" style="margin-right: 5px" for="publico">público</label>
+				<input type="radio" name="visibilidade" class="form-check-input form-check-inline" value="publico" id="publico" th:field="*{visibilidade}"/>
+			</div>
+			
+			<div style="display:flex;">
+				<label class="form-check-label" style="margin-right: 5px" for="privado">privado</label>
+				<input type="radio" name="visibilidade" class="form-check-input form-check-inline" value="privado" id="privado" th:field="*{visibilidade}"/>
+			</div>
 		</div>
 		
 		<div>
 			<label for="data">Data de expiração</label>
-			<input type="date" class="form-control" id="dataDeExpiracao" name="dataDeExpiracao"value=""/>
+			<input type="date" class="form-control" id="dataDeExpiracao"  name="dataDeExpiracao"value="" th:field="*{dataDeExpiracao}" />
 		</div>
 		
-		<button type="submit">Criar grupo</button>
+		<button type="submit" class="btn btn-primary"  style="margin:10px 0;">Criar grupo</button>
 	</form>
+	</div>
+	
 </body>
 </html>

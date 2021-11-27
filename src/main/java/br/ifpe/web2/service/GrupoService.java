@@ -21,15 +21,23 @@ public class GrupoService {
 		grupoDao.save(grupo);
 	}
 	
-	public void deletarGrupo(Grupo grupo) {
-		grupoDao.delete(grupo);
+	public void deletarGrupo(Integer id) {
+		grupoDao.deleteById(id);
+	}
+	
+	public void editarGrupo(Grupo grupo) {
+		grupoDao.save(grupo);
+	}
+	
+	public List<Grupo> listarGrupos(){
+		return grupoDao.findAll();
 	}
 	
 	public List<Grupo> listarGrupoVigente(){
-		return grupoDao.findByDataDeExpiracaoBefore(LocalDate.now());
+		return grupoDao.findByDataDeExpiracaoAfter(LocalDate.now());
 	}
 	
-	public Grupo buscarGrupo(String id) {
+	public Grupo buscarGrupo(Integer id) {
 		return grupoDao.findById(id).get();
 	}
 }
